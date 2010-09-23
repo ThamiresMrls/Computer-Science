@@ -1,0 +1,32 @@
+#we like to turn in both directions.
+def turn_right():
+    repeat(turn_left,3)
+#If the front is clear, moving is good. 
+#If not, we should turn left, and then move.
+def walk():
+        if front_is_clear():
+            move()
+        else:
+            turn_left()
+            move()
+#If we're on a beeper, the program is done
+#time to turn off. If the right is clear,
+#there's a hole, we have to fill it. 
+#Otherwise, we just keep going.
+def holes():
+    if on_beeper():
+        turn_right()
+        turn_off()
+    elif right_is_clear():
+        put_beeper()
+        walk()
+    else:
+        walk()
+walk()
+#make sure there is a beeper so we
+#know when to stop.
+put_beeper()
+turn_right()
+walk()
+while True:
+    holes()
