@@ -1,0 +1,25 @@
+def turn_right():
+    repeat(turn_left,3)
+def walk():
+        if front_is_clear():
+            move()
+        else:
+            turn_left()
+def holes():
+    if on_beeper():
+        turn_right()
+        turn_off()
+    elif right_is_clear():
+        put_beeper()
+        walk()
+    else:
+        walk()
+move()
+put_beeper()
+turn_right()
+move()
+def go():
+    i=1
+    while i>0:
+        holes()
+go()

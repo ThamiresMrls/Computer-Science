@@ -1,0 +1,33 @@
+#this is something I did earlier (messing around)
+#so that is why it doesn't follow my current formatting
+def walk():
+    if front_is_clear():
+        move()
+        repeat(test,1)
+    else:
+        turn_left()
+        move()
+        repeat(test,1)
+def test():
+    if on_beeper():
+        turn_right()
+        turn_off()
+    else: 
+        repeat(block,1)
+#work for this homework specifically starts here
+def block():
+    if right_is_clear():
+        put_beeper()
+        repeat(walk,1)
+    else:
+        repeat(walk,1)
+
+def turn_right():
+    repeat(turn_left, 3)
+
+#program starts here
+move()
+put_beeper()
+turn_right()
+walk()
+#program ends here

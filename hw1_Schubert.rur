@@ -1,0 +1,162 @@
+#These are my definitions
+
+#so I can make the box thingy at
+#even when I am turning left
+def super_left():
+    repeat(turn_left, 5)
+
+def turn_around():
+    repeat(turn_left,2)
+
+def turn_right():
+    repeat(turn_left,3)
+
+def pickets():
+    turn_left()
+    move()
+    turn_around()
+    move()
+    turn_left()
+    move()
+
+#for the right side of the fence
+def Rfence():
+    turn_left()
+    move()
+    turn_left()
+    repeat(move,1)
+
+#for the right side of the roof
+
+def roof():
+    move()
+    turn_left()
+    move()
+    turn_right()
+    
+def tree():
+    turn_right()
+    repeat(move,5)
+    turn_left()
+    move()
+    turn_right()
+    repeat(move,2)
+    turn_right()
+    repeat(move,3)
+    turn_right()
+    repeat(move,2)
+    turn_right()
+    move()
+    turn_left()
+    repeat(move,5)
+    
+def sun():
+    turn_right()
+    move()
+    turn_right()
+    repeat(move,2)
+    turn_around()
+    move()
+    turn_right()
+    move()
+    turn_around()
+    repeat(move, 2)
+    turn_right()
+    move()
+    turn_around()
+    repeat(move, 2)
+    turn_around()
+    repeat(move, 2)
+    turn_right()
+    repeat(move, 2)
+    turn_around()
+    repeat(move, 2)
+    turn_around()
+#sorry, didn't think to define rays for the sun until after I did it
+
+#this is for the left window, the right window
+#was done in the program
+def window():
+    move()
+    super_left()
+    move()
+    super_left()
+    move()
+    super_left()
+    move()
+#program starts
+repeat(pickets,9)
+Rfence()
+turn_right()
+repeat(move,2)
+repeat(roof,3)
+
+#to make the roof go down turn left is needed
+turn_left()
+repeat(roof,2)
+
+#I'm finishing the house manually
+move()
+turn_left()
+repeat(move,3)
+turn_right()
+move()
+tree()
+turn_right()
+repeat(move,2)
+turn_right()
+
+#finished fence, beginning border
+repeat(move,8)
+turn_right()
+repeat(move,9)
+sun()
+
+#going down the left side
+repeat(move,8)
+
+#time for the rest of the fence and door
+turn_right()
+repeat(move, 4)
+turn_right()
+move()
+turn_right()
+move()
+window()
+turn_right()
+repeat(move, 2)
+
+#finishing up the door now
+turn_left()
+repeat(move, 2)
+turn_left()
+repeat(move, 2)
+turn_left()
+repeat(move, 2)
+turn_left()
+repeat(move, 2)
+
+#second window
+turn_right()
+move()
+super_left()
+move()
+super_left()
+move()
+super_left()
+repeat(move,2)
+turn_right()
+#should be facing south now
+
+#finishing fence
+move()
+turn_right()
+repeat(move,3)
+turn_left()
+move()
+turn_left()
+
+#putting the robot by the door
+repeat(move,3)
+turn_left()
+turn_off()
