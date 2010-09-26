@@ -1,0 +1,21 @@
+####Homework 3####
+def turn_right():
+    repeat(turn_left,3)
+def walk():
+    if front_is_clear():
+        move()
+    else:
+        put_beeper()
+        turn_left()
+        move()
+def corners():
+    if on_beeper():
+        turn_right()
+        turn_off()
+    elif right_is_clear():
+        turn_right()
+        walk()
+    else:
+        walk()
+while True:
+    corners()
