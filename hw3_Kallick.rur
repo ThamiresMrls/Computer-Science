@@ -20,8 +20,8 @@ def walk():
         if front_is_clear():
             move()
         else:
-        turn_left()
-        move()
+            turn_left()
+            move()
 #if we're on a beeper, we're done.
 #if the right is clear, we should go
 #right.
