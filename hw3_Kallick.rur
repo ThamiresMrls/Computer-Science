@@ -1,13 +1,30 @@
 ####Homework 3####
+
+#turning right is good.
 def turn_right():
     repeat(turn_left,3)
+#walk. if the front is clear
+#move. if it's not, we're at 
+#a corner, so put a beeper and
+#turn left to get out of the 
+#corner. Unfortunately, even if 
+#we turn left we might still be 
+#in trouble, so we should check 
+#if the front is clear again.
 def walk():
     if front_is_clear():
         move()
     else:
         put_beeper()
         turn_left()
+        if front_is_clear():
+            move()
+        else:
+        turn_left()
         move()
+#if we're on a beeper, we're done.
+#if the right is clear, we should go
+#right.
 def corners():
     if on_beeper():
         turn_right()
