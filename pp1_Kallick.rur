@@ -2,28 +2,44 @@
 def turn_right():
     repeat(turn_left,3)
 def walk():
+    global n
+    global c
     if not facing_north() and not front_is_clear():
         turn_left()
+        if front_is_clear():
+            move()
+            turn_left()
+            while front_is_clear():
+                move()
+            c=1
+            cupola()
+        else:
+            turn_off()
+    else:
         move()
-        turn_left()
 def direction():
-    dir=5
+    global d
     if facing_north():
         d=1
     else:
         turn_left()
         if facing_north():
             d=2
+            turn_right()
         else:
             turn_left()
             if facing_north():
                 d=3
             else:
                 d=4
+            repeat(turn_right,2)
 def cupola():
-    n=4
+    global c
+    if c==1:
+        n=3
+    else:
+        n=4
     while n>0:
-        d=5
         if front_is_clear():
             move()
             direction()
@@ -32,20 +48,28 @@ def cupola():
         else:
             turn_right()
             if front_is_clear():
+                direction()
+                if d==2 or d==4:
+                    n -=1
                 move()
                 turn_left()
-                n -=1
             else:
                 turn_right()
+                direction()
+                if d==2 or d==4:
+                    n -=1
                 move()
                 turn_left()
-                n -=1
     turn_right()
 def columns():
+    global c
     if facing_north() and not front_is_clear():
+        c=0
         cupola()
     if not on_beeper():
         put_beeper()
+        walk()
+    else:
         walk()
 turn_left()
 while True:
