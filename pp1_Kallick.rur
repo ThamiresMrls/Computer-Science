@@ -52,7 +52,14 @@ def cupola():
                 if d==2 or d==4:
                     n -=1
                 move()
-                turn_left()
+                if left_is_clear():
+                    turn_left()
+                else:
+                    if front_is_clear():
+                        move()
+                        n -=1
+                    else:
+                        turn_off()
             else:
                 turn_right()
                 direction()
