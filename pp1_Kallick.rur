@@ -1,0 +1,52 @@
+#Programming Project 1#
+def turn_right():
+    repeat(turn_left,3)
+def walk():
+    if not facing_north() and not front_is_clear():
+        turn_left()
+        move()
+        turn_left()
+def direction():
+    dir=5
+    if facing_north():
+        d=1
+    else:
+        turn_left()
+        if facing_north():
+            d=2
+        else:
+            turn_left()
+            if facing_north():
+                d=3
+            else:
+                d=4
+def cupola():
+    n=4
+    while n>0:
+        d=5
+        if front_is_clear():
+            move()
+            direction()
+            if d==2 or d==4:
+                n -=1
+        else:
+            turn_right()
+            if front_is_clear():
+                move()
+                turn_left()
+                n -=1
+            else:
+                turn_right()
+                move()
+                turn_left()
+                n -=1
+    turn_right()
+def columns():
+    if facing_north() and not front_is_clear():
+        cupola()
+    if not on_beeper():
+        put_beeper()
+        walk()
+turn_left()
+while True:
+    columns()
