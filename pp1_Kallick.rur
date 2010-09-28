@@ -2,7 +2,6 @@
 def turn_right():
     repeat(turn_left,3)
 def walk():
-    global n
     global c
     if not facing_north() and not front_is_clear():
         turn_left()
