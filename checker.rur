@@ -1,0 +1,39 @@
+def turn_right():
+    repeat(turn_left,3)
+def put_and_mover():
+        put_beeper()
+        if front_is_clear():
+            move()
+            if front_is_clear():
+                move()
+def put_and_movel():
+    if front_is_clear():
+        move()
+        if front_is_clear():
+            move()
+            put_beeper()
+def go_left():
+    move()
+    put_beeper()
+    while front_is_clear():
+        put_and_movel()
+    put_beeper()
+    turn_right()
+    if front_is_clear():
+        move()
+        turn_right()
+    else:
+        turn_off()
+def going_right():
+    while front_is_clear():
+        put_and_mover()
+    put_beeper()
+    turn_left()
+    if front_is_clear():
+        move()
+        turn_left()
+    else:
+        turn_off()
+while True:
+    going_right()
+    go_left()
