@@ -77,8 +77,14 @@ def turn(p):
     else:
         print "Sorry, that's not a column"
     print_board()
-#def winnertest():
-#    if board[
-while True:
+def winnertest():
+    if board[6][0]=='x' and board[6][1]=='x' and board[6][2]=='x':
+        return 'x'
+end_game=winnertest()
+while not end_game=='x':
+    end_game=winnertest()
     turn('x')
+    end_game=winnertest()
     turn('o')
+    end_game=winnertest()
+print "x wins!!!!"
