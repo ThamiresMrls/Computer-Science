@@ -1,0 +1,31 @@
+#pp1-2 This is Daniel's code.
+def turn_right():
+    repeat(turn_left,3)
+def going_right():
+    while front_is_clear():
+        put_beeper()
+        move()
+        if front_is_clear():
+            move()
+    turn_left()
+    if front_is_clear():
+        move()
+        turn_left()
+    else:
+        turn_off()
+def going_left():
+    put_beeper()
+    while front_is_clear():
+        move()
+        if front_is_clear():
+            move()
+            put_beeper()
+    turn_right()
+    if front_is_clear():
+        move()
+        turn_right()
+    else:
+        turn_off()
+while True:
+    going_right()
+    going_left()

@@ -1,0 +1,36 @@
+#pp1-1 This is Daniel Dyssegaard Kallick's
+#code.
+def turn_right():
+    repeat(turn_left,3)
+#fix the column. If there's no beeper,
+#put one there. 
+def fix():
+    if not on_beeper():
+        put_beeper()
+#fix the column.
+def column():
+#fix the column going one way
+#then turn around and fix it the
+#other way. This catches problems 
+#with different column sizes.
+    while front_is_clear():
+        fix()
+        move()
+    repeat(turn_left,2)
+    while front_is_clear():
+        fix()
+        move()
+    turn_left()
+#when you're done fixing the 
+#column, move on to the next
+#column. Unless, that is, there's
+#a wall, but if there is, you're 
+#done. 
+    if front_is_clear():
+        repeat(move,4)
+        turn_left()
+    else:
+        turn_off()
+turn_left()
+while True:
+    column()
