@@ -42,7 +42,10 @@ def play4():
         print "d=", d
         print "e=", e
         print "f=", f
-        print "a=", g
+        print "g=", g
+        if a==5 and b==5 and c==5 and d==5 and e==5 and f==5 and g==5:
+            print "Shit, I don't know how to exit."
+            break
 
 print "Hi!"
 str1 = raw_input("What do you want to do?")
