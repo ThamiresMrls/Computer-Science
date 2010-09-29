@@ -1,4 +1,3 @@
-#while True:
 def print_board():
     print board[1]
     print board[2]
