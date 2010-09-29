@@ -1,4 +1,5 @@
 def print_board():
+    print board[0]
     print board[1]
     print board[2]
     print board[3]
@@ -45,7 +46,7 @@ def change_board(y,n,p):
     elif board[1][y]==n:
         board[1][y]=p
     elif board[0][y]==n:
-        board[0][0]=p
+        board[0][y]=p
     else:
         print "Sorry, that column is full"
 print "Let's play connect 4!"
@@ -76,6 +77,8 @@ def turn(p):
     else:
         print "Sorry, that's not a column"
     print_board()
+#def winnertest():
+#    if board[
 while True:
     turn('x')
     turn('o')
