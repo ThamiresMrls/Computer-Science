@@ -33,7 +33,7 @@ def play4():
                 f+=1
         elif str1 == "g":
             if g<5:
-                f+=1
+                g+=1
         else: print "Sorry, your move was fucking strange."
 
         print "a=", a
@@ -44,7 +44,7 @@ def play4():
         print "f=", f
         print "g=", g
         if a==5 and b==5 and c==5 and d==5 and e==5 and f==5 and g==5:
-            print "Shit, I don't know how to exit."
+            print "Shit, I don't know how to exit.\nOh wait, actually I do. I just break"
             break
 
 print "Hi!"
@@ -52,7 +52,7 @@ str1 = raw_input("What do you want to do?")
 if str1=="play":
     str2 = raw_input("What do you want to play?")
     if str2 == "tag":
-        print "Tag you are it!"
+        print "Tag, you're it!"
     elif str2 == "connect 4":
         play4()
     else:
