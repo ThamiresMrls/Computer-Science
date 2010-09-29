@@ -1,3 +1,10 @@
+"""Let's make some comments. Yaay! This program is
+written mostly entirely by Thomas Schubert. Daniel
+fixed some stuff when Thomas' code was broken.
+"""
+#set zeee variables to zero. ask the user if they 
+#want to increase them. Cant make em more than five
+#though, and when everything is five, we're done.
 def play4():
     a=0
     b=0
@@ -51,8 +58,11 @@ print "Hi!"
 str1 = raw_input("What do you want to do?")
 if str1=="play":
     str2 = raw_input("What do you want to play?")
+    #we can play tag!!!!!!!!!!!!!1
     if str2 == "tag":
         print "Tag, you're it!"
+        #or, in the real world, we can play connect four.
+        #well, not actually. but yeah.
     elif str2 == "connect 4":
         play4()
     else:
