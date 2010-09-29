@@ -31,45 +31,51 @@ def drop(col):
         return 6,'g'
     else:
         print "That's not a column"
-def change_board(y,n):
+def change_board(y,n,p):
     if board[6][y]==n:
-        board[6][y]='x'
+        board[6][y]=p
     elif board[5][y]==n:
-        board[5][y]='x'
+        board[5][y]=p
     elif board[4][y]==n:
-        board[4][y]='x'
+        board[4][y]=p
     elif board[3][y]==n:
-        board[3][y]='x'
+        board[3][y]=p
     elif board[2][y]==n:
-        board[2][y]='x'
+        board[2][y]=p
     elif board[1][y]==n:
-        board[1][y]='x'
+        board[1][y]=p
     elif board[0][y]==n:
-        board[0][0]='x'
+        board[0][0]=p
     else:
-        print "Sorry, that row is full"
+        print "Sorry, that column is full"
+print "Let's play connect 4!"
 print_board()
-while True:
+def turn(p):
     x = raw_input("Where would you like to go? ")
     if x=='a':
         y,n=drop('a')
-        change_board(y,n)
+        change_board(y,n,p)
     elif x=='b':
         y,n=drop('b')
-        change_board(y,n)
+        change_board(y,n,p)
     elif x=='c':
         y,n=drop('c')
-        change_board(y,n)
+        change_board(y,n,p)
     elif x=='d':
         y,n=drop('d')
-        change_board(y,n)
+        change_board(y,n,p)
     elif x=='e':
         y,n=drop('e')
-        change_board(y,n)
+        change_board(y,n,p)
     elif x=='f':
         y,n=drop('f')
-        change_board(y,n)
-    else:
+        change_board(y,n,p)
+    elif x=='g':
         y,n=drop('g')
-        change_board(y,n)
+        change_board(y,n,p)
+    else:
+        print "Sorry, that's not a column"
     print_board()
+while True:
+    turn('x')
+    turn('o')
