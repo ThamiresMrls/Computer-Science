@@ -1,26 +1,3 @@
-#for horizontal
-def winnertest1():
-    i=0
-    while i<6:
-        i+=1
-        for e in range(0,3):
-            if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
-                print "x wins!!!!"
-                break
-#for vertical
-def winnertest2():
-    e=0
-    while e<7:
-        e+=1
-        for i in range(0,2):
-            if board[i][e]=='x' and board[i+1][e]=='x' and board[i+2][e]=='x' and board[i+3][e]=='x':
-                print "x wins!!!!"
-                break
-#for diagonal - not done
-def winnertest3():
-    i=0
-    while i<5:
-        i+1
 def print_board():
     print board[0]
     print board[1]
@@ -102,10 +79,10 @@ def turn(p):
 #def winnertest():
 #    if board[6][0]=='x' and board[6][1]=='x' and board[6][2]=='x':
 #        return 'x'
-end_game=winnertest()
+#end_game=winnertest()
 while True:
     turn('x')
-    winnertest()
+ #   winnertest()
     turn('o')
-    winnertest()
+  #  winnertest()
 print "x wins!!!!"

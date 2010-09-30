@@ -10,16 +10,12 @@
 def winnertest1():
     i=0
     while i<6:
-        for e in range(0,6):
-            try:
-                if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
-                    print "x wins!!!!"
-                    return 'over'
-                else:
-                    i+=1
-                    break
-            except ValueError:
-                pass
+        for e in range(0,4):
+            if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
+                print "x wins!!!!"
+                return 'over'
+        i+=1
+    return 'on'
 #for vertical
 #basically the same as the first test
 def winnertest2():
@@ -111,7 +107,7 @@ def change_board(y,n,p):
 print "Let's play connect 4!"
 def turn(p):
     print_board()
-    print p,":It's your turn!"
+    print p,": It's your turn!"
     x = raw_input("Where would you like to go? ")
     if x=='a':
         y,n=drop('a')
@@ -137,7 +133,9 @@ def turn(p):
     else:
         print "Sorry, that's not a column"
         turn(p)
-game=winnertest1()
+
+game='on'
+# game=winnertest1()
 #right now, just trying to get the first test to work.
 while not game=='over':
     turn('x')
