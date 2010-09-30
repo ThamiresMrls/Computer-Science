@@ -7,6 +7,7 @@
 #so this right now works for any row, four in a row horizontally. 
 #sadly, it only works if the four in a row starts at a. Why? No
 #idea. It has a try except in it though!
+#added a comment.
 def winnertest1():
     i=0
     while i<6:
