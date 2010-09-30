@@ -1,25 +1,41 @@
 #i=row
+#the idea here is to test for a winner, in the horizontal direction.
+#iterate through the rows, then go through the columns. if there are 
+#four in a row, break and make x the winner
+###
+###
+#so this right now works for any row, four in a row horizontally. 
+#sadly, it only works if the four in a row starts at a. Why? No
+#idea. It has a try except in it though!
 def winnertest1():
     i=0
     while i<6:
         for e in range(0,6):
-            if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
-                print "x wins!!!!"
-                return 'over'
-            else:
-                i+=1
-                break
+            try:
+                if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
+                    print "x wins!!!!"
+                    return 'over'
+                else:
+                    i+=1
+                    break
+            except ValueError:
+                pass
 #for vertical
+#basically the same as the first test
 def winnertest2():
     e=0
     while e<5:
         for i in range(0,1):
-            if board[i][e]=='x' and board[i+1][e]=='x' and board[i+2][e]=='x' and board[i+3][e]=='x':
-                print "x wins!!!!"
-                return 'over'
-            else:
-                e+=1
-                break
+            try:
+                if board[i][e]=='x' and board[i+1][e]=='x' and board[i+2][e]=='x' and board[i+3][e]=='x':
+                    print "x wins!!!!"
+                    return 'over'
+                else:
+                    e+=1
+                    break
+            except ValueError:
+                pass
+
 #for diagonal
 def winnertest3():
     i=0
@@ -41,6 +57,7 @@ def winnertest4():
                 return 'over'
                 break
             i+=1
+#prints the board.
 def print_board():
     print board[0]
     print board[1]
@@ -48,6 +65,7 @@ def print_board():
     print board[3]
     print board[4]
     print board[5]
+#create the board.
 board = [
 ['a','b','c','d','e','f','g'],
 ['a','b','c','d','e','f','g'],
@@ -56,6 +74,7 @@ board = [
 ['a','b','c','d','e','f','g'],
 ['a','b','c','d','e','f','g'],
 ]
+#
 def drop(col):
     if col=='a':
         return 0,'a'
@@ -119,6 +138,7 @@ def turn(p):
         print "Sorry, that's not a column"
         turn(p)
 game=winnertest1()
+#right now, just trying to get the first test to work.
 while not game=='over':
     turn('x')
     winnertest1()
