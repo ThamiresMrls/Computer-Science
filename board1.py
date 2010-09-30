@@ -1,9 +1,9 @@
 #i=row
 #e=column.
 #for horizontal.
-#Working.
 #All of the gameplay is working, but the tests are...
 #some are working, some arent. 
+#Working.
 def winnertest1():
     i=0
     while i<6:
