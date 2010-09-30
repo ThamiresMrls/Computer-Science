@@ -49,9 +49,10 @@ def change_board(y,n,p):
         board[0][y]=p
     else:
         print "Sorry, that column is full"
+        turn(p)
 print "Let's play connect 4!"
-print_board()
 def turn(p):
+    print_board()
     print p,":It's your turn!"
     x = raw_input("Where would you like to go? ")
     if x=='a':
@@ -77,13 +78,12 @@ def turn(p):
         change_board(y,n,p)
     else:
         print "Sorry, that's not a column"
-    print_board()
+        turn(p)
 def winnertest():
     if board[6][0]=='x' and board[6][1]=='x' and board[6][2]=='x':
         return 'x'
 end_game=winnertest()
 while not end_game=='x':
-    end_game=winnertest()
     turn('x')
     end_game=winnertest()
     turn('o')
