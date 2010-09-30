@@ -52,6 +52,7 @@ def change_board(y,n,p):
 print "Let's play connect 4!"
 print_board()
 def turn(p):
+    print p,":It's your turn!"
     x = raw_input("Where would you like to go? ")
     if x=='a':
         y,n=drop('a')
