@@ -1,3 +1,26 @@
+#for horizontal
+def winnertest1():
+    i=0
+    while i<6:
+        i+=1
+        for e in range(0,3):
+            if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
+                print "x wins!!!!"
+                break
+#for vertical
+def winnertest2():
+    e=0
+    while e<7:
+        e+=1
+        for i in range(0,2):
+            if board[i][e]=='x' and board[i+1][e]=='x' and board[i+2][e]=='x' and board[i+3][e]=='x':
+                print "x wins!!!!"
+                break
+#for diagonal - not done
+def winnertest3():
+    i=0
+    while i<5:
+        i+1
 def print_board():
     print board[0]
     print board[1]
@@ -5,9 +28,7 @@ def print_board():
     print board[3]
     print board[4]
     print board[5]
-    print board[6]
 board = [
-['a','b','c','d','e','f','g'],
 ['a','b','c','d','e','f','g'],
 ['a','b','c','d','e','f','g'],
 ['a','b','c','d','e','f','g'],
@@ -33,9 +54,7 @@ def drop(col):
     else:
         print "That's not a column"
 def change_board(y,n,p):
-    if board[6][y]==n:
-        board[6][y]=p
-    elif board[5][y]==n:
+    if board[5][y]==n:
         board[5][y]=p
     elif board[4][y]==n:
         board[4][y]=p
@@ -79,13 +98,14 @@ def turn(p):
     else:
         print "Sorry, that's not a column"
         turn(p)
-def winnertest():
-    if board[6][0]=='x' and board[6][1]=='x' and board[6][2]=='x':
-        return 'x'
+#this one is defunct, we're not using it anymore.
+#def winnertest():
+#    if board[6][0]=='x' and board[6][1]=='x' and board[6][2]=='x':
+#        return 'x'
 end_game=winnertest()
-while not end_game=='x':
+while True:
     turn('x')
-    end_game=winnertest()
+    winnertest()
     turn('o')
-    end_game=winnertest()
+    winnertest()
 print "x wins!!!!"
