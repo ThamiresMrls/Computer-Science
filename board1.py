@@ -1,44 +1,60 @@
+#Yeaaahhhh, everything works. The only thing that doesn't work 
+#entirely is the end. somehow it always manages to inform 
+#the player who has won, and correctly too, but it never really
+#knows that it is time to stop. well, it does, but not really on 
+#time. When /either/ x or o wins, it decides to give x a bunch
+#more turns, until x wins again (or maybe just 
+#arbitrarily). Not really very fair. The returns obviously arent 
+#working somehow.
 #i=row
 #e=column.
 #for horizontal.
-#All of the gameplay is working, but the tests are...
-#some are working, some arent. 
 #Working.
-def winnertest1():
+def winnertest1(p):
     for i in range(6):
         for e in range(4):
-            if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
-                print "x wins!!!!"
-                return 'over'
-    return 'on'
+            if board[i][e]==p and board[i][e+1]==p and board[i][e+2]==p and board[i][e+3]==p:
+                return True
+    return False
 #for vertical
 #working.
-def winnertest2():
+def winnertest2(p):
     for e in range(7):
         for i in range(3):
-            if board[i][e]=='X' and board[i+1][e]=='X' and board[i+2][e]=='X' and board[i+3][e]=='X':
-                print "X wins!!!!"
-                return 'over'
-    return 'on'
+            if board[i][e]==p and board[i+1][e]==p and board[i+2][e]==p and board[i+3][e]==p:
+                return True
+    return False
 #for diagonal
 #working! for right to left diagonal.
-def winnertest3():
+def winnertest3(p):
     for i in range(3):
         for e in range(4):
-            print i,e
-            if board[i][e]=='X' and board[i+1][e+1]=='X' and board[i+2][e+2]=='X' and board[i+3][e+3]=='X':
-                print "X wins!!!!"
-                return 'over'
-    return 'on'
+            if board[i][e]==p and board[i+1][e+1]==p and board[i+2][e+2]==p and board[i+3][e+3]==p:
+                return True
+    return False
 #diagonal going other way
 #not working! WHYYY
-def winnertest4():
+def winnertest4(p):
     for i in range(3):
         for e in range(3,6,4):
-            if board[i][e]=='X' and board[i+1][e-1]=='X' and board[i+2][e-2]=='X' and board[i+3][e-3]=='X':
-                print "X wins!!!!"
-                return 'over'
-    return 'on'
+            if board[i][e]==p and board[i+1][e-1]==p and board[i+2][e-2]==p and board[i+3][e-3]==p:
+                return True
+    return False
+def test(p):
+    if winnertest1(p):
+        print p, "Wins!!!"
+        return True
+    elif winnertest2(p):
+        print p, "Wins!!!"
+        return True
+    elif winnertest3(p):
+        print p, "Wins!!!"
+        return True
+    elif winnertest4(p):
+        print p, "Wins!!!"
+        return True
+    else:
+        return False
 #prints the board.
 def print_board():
     print board[0]
@@ -133,14 +149,21 @@ def turn(p):
     else:
         print "Sorry, that's not a column"
         turn(p)
-game='on'
+#game='on'
 ##############################
 #I know this is not a good way to 
 #implement it, but it's not the
 #point right now. --Daniel.
 #############################
-while not game=='over':
-    turn('X')
-    game=winnertest4()
-    turn('O')
-    game=winnertest4()
+def game():
+    while True:
+        turn('X')
+        if not test('X'):
+            turn('O')
+            if not test('O'):
+                game()
+            else:
+                return
+        else:
+            return
+game()
