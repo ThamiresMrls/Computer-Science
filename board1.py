@@ -5,29 +5,24 @@
 #some are working, some arent. 
 #Working.
 def winnertest1():
-    i=0
-    while i<6:
-        for e in range(0,4):
+    for i in range(6):
+        for e in range(4):
             if board[i][e]=='x' and board[i][e+1]=='x' and board[i][e+2]=='x' and board[i][e+3]=='x':
                 print "x wins!!!!"
                 return 'over'
-        i+=1
     return 'on'
 #for vertical
 #working.
 def winnertest2():
-    e=0
-    while e<7:
+    for e in range(7):
         for i in range(3):
             if board[i][e]=='X' and board[i+1][e]=='X' and board[i+2][e]=='X' and board[i+3][e]=='X':
                 print "X wins!!!!"
                 return 'over'
-        e+=1
     return 'on'
 #for diagonal
-#not working! WHYYYY
+#working! for right to left diagonal.
 def winnertest3():
-#    i=2
     for i in range(3):
         for e in range(4):
             print i,e
@@ -38,13 +33,11 @@ def winnertest3():
 #diagonal going other way
 #not working! WHYYY
 def winnertest4():
-    i=2
-    while i!=-1:
-        for e in range(3,6):
+    for i in range(3):
+        for e in range(3,6,4):
             if board[i][e]=='X' and board[i+1][e-1]=='X' and board[i+2][e-2]=='X' and board[i+3][e-3]=='X':
                 print "X wins!!!!"
                 return 'over'
-        i+=1
     return 'on'
 #prints the board.
 def print_board():
@@ -148,6 +141,6 @@ game='on'
 #############################
 while not game=='over':
     turn('X')
-    game=winnertest3()
+    game=winnertest4()
     turn('O')
-    game=winnertest3()
+    game=winnertest4()
