@@ -40,6 +40,12 @@ def winnertest4(p):
             if board[i][e]==p and board[i+1][e-1]==p and board[i+2][e-2]==p and board[i+3][e-3]==p:
                 return True
     return False
+#needs to be written. Just add it to the test 
+#function when it has been.
+def tietest():
+    for i in range(6):
+        for e in range(7):
+            #check if everything is filled here.
 def test(p):
     if winnertest1(p):
         print p, "Wins!!!"
@@ -56,13 +62,11 @@ def test(p):
     else:
         return False
 #prints the board.
+#simplified, we really dont have to use six 
+#lines here.
 def print_board():
-    print board[0]
-    print board[1]
-    print board[2]
-    print board[3]
-    print board[4]
-    print board[5]
+    for i in range(6):
+        print board[i]
 #create the board.
 #This could be modularized so you can define the size 
 #of the board, but why do that, really.
@@ -156,14 +160,15 @@ def turn(p):
 #point right now. --Daniel.
 #############################
 def game():
-    while True:
+    stop='no'
+    while stop=='no':
         turn('X')
-        if not test('X'):
+        if not test('X') and stop=='no':
             turn('O')
-            if not test('O'):
+            if not test('O') and stop=='no':
                 game()
             else:
-                return
+                stop='yes'
         else:
-            return
+            stop='yes'
 game()
