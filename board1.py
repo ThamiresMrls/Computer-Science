@@ -27,14 +27,13 @@ def winnertest2():
 #for diagonal
 #not working! WHYYYY
 def winnertest3():
-    i=2
-    while i!=-1:
+#    i=2
+    for i in range(3):
         for e in range(4):
             print i,e
             if board[i][e]=='X' and board[i+1][e+1]=='X' and board[i+2][e+2]=='X' and board[i+3][e+3]=='X':
                 print "X wins!!!!"
                 return 'over'
-        i-=1
     return 'on'
 #diagonal going other way
 #not working! WHYYY
