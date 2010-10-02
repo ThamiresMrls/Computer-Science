@@ -46,6 +46,11 @@ def winnertest4(p):
                 return True
     return False
 
+def tietest():
+    if not board[0][0]=='a' and not board[0][1]=='b' and not board[0][2]=='c' and not board[0][3]=='d' and not board[0][4]=='e' and not board[0][5]=='f' and not board[0][6]=='g':
+        return True
+    else:
+        return False
 
 #needs to be written. Just add it to the test 
 #function when it has been.
@@ -68,6 +73,9 @@ def test(p):
         return True
     elif winnertest4(p):
         print p, "Wins!!!"
+        return True
+    elif tietest():
+        print "Sigh, it's a tie"
         return True
     else:
         return False
@@ -96,6 +104,7 @@ def drop(col):
         return 6,'g'
     else:
         print "That's not a column"
+        turn(p)
 
 
 def change_board(y,n,p):
@@ -158,21 +167,18 @@ def turn(p):
         turn(p)
 
 
-##############################
-#This is where the problems are.
-#############################
 def game():
-    stop='no'
-    while stop=='no':
-        turn('X')
-        if not test('X') and stop=='no':
-            turn('O')
-            if not test('O') and stop=='no':
-                game()
-            else:
-                stop='yes'
+    turn('X')
+    if not test('X'):
+        turn('O')
+        if not test('O'):
+            game()
         else:
-            stop='yes'
+            print_board()
+            print "Good game"
+    else:
+        print_board()
+        print "Good game"
 
 
 #create the board.
