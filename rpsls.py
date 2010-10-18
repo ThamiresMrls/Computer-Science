@@ -1,5 +1,8 @@
 #this is rock paper scissors lizard spock.
 import random
+def clear_screen():
+    for i in range(50):
+        print '\n'
 def cheatmode():
     #cheat mode!
     # get a random number between 0 and a hundred, 
@@ -98,6 +101,7 @@ def play2():
     #play two players. get inputs for both players one and two, then compare 'em.
     move=raw_input("Player 1:Rock Paper Scissors Lizard Spock? ")
     move=move.lower()
+    clear_screen()
     move2=raw_input("Player 2: Rock Paper Scissors Lizard Spock? ")
     move2=move2.lower()
     compare(move,move2,2)
