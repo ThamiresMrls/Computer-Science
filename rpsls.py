@@ -5,7 +5,7 @@ def cheatmode():
     # get a random number between 0 and a hundred, 
     # if it's under 40, cheat!
     cheat=random.randint(0,100)
-    if cheat <=40:
+    if cheat <40:
         return "cheat"
     else:
         return "nocheat"
