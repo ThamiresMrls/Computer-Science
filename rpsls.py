@@ -121,10 +121,10 @@ def compare(move, move2, p, toggle):
     else:
         if p==1:
             print "Your move was not legal. Please input rock paper scissors lizard or spock"
-            play1()
+            play1(toggle)
         elif p==2:
             print "Someone's move was not legal, start over. maybe a typo?"
-            play2()
+            play2(toggle)
 def play0(toggle):
     #play no players
     move=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
@@ -140,7 +140,7 @@ def play1(toggle):
     move=move.lower()
     move2=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
     print 'player 2 threw', move2
-    winner=compare(move,move2,1)
+    winner=compare(move,move2,1, toggle)
     return winner
 def play2(toggle):
     #play two players. get inputs for both players one and two, then compare 'em.
@@ -167,29 +167,17 @@ def game(upto,players, toggle):
         print "player 2 has ", points2, "points"
         if players==1:
             winner=play1(toggle)
-            if winner=='player_1':
-                points1+=1
-            if winner=='player_2':
-                points2+=1
         elif players==2:
             winner=play2(toggle)
-            if winner=='player_1':
-                points1+=1
-            if winner=='player_2':
-                points2+=1
         elif players==0:
             winner=play0(toggle)
-            if winner=='player_1':
-                points1+=1
-            if winner=='player_2':
-                points2+=1
         #secret mode, just for fun
         elif players==589:
             winner=play589()
-            if winner=='player_1':
-                points1+=1
-            if winner=='player_2':
-                points2+=1
+        if winner=='player_1':
+            points1+=1
+        if winner=='player_2':
+            points2+=1
     if points2==upto:
         print "player 1 has ", points1, "points"
         print "player 2 has ", points2, "points"
