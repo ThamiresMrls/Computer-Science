@@ -159,29 +159,25 @@ def play589():
     move2='lizard'
     winner=compare(move, move2,1)
     return winner
-def round(upto,players, toggle):
+def game(upto,players, toggle):
     points1=0
     points2=0
     while points1<upto and points2<upto:
+        print "player 1 has ", points1, "points"
+        print "player 2 has ", points2, "points"
         if players==1:
-            print "player 1 has ", points1, "points"
-            print "player 2 has ", points2, "points"
             winner=play1(toggle)
             if winner=='player_1':
                 points1+=1
             if winner=='player_2':
                 points2+=1
         elif players==2:
-            print "player 1 has ", points1, "points"
-            print "player 2 has ", points2, "points"
             winner=play2(toggle)
             if winner=='player_1':
                 points1+=1
             if winner=='player_2':
                 points2+=1
         elif players==0:
-            print "player 1 has ", points1, "points"
-            print "player 2 has ", points2, "points"
             winner=play0(toggle)
             if winner=='player_1':
                 points1+=1
@@ -233,5 +229,5 @@ def init():
         toggle='on'
     else:
         toggle=='off'
-    round(upto,players, toggle)
+    game(upto,players, toggle)
 init()
