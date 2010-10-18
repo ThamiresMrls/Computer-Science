@@ -153,12 +153,6 @@ def play2(toggle):
     print "player 2 threw ",move2
     winner=compare(move,move2,2, toggle)
     return winner
-def play589():
-    #this is a test to see probabilities, just for fun
-    move=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
-    move2='lizard'
-    winner=compare(move, move2,1)
-    return winner
 def game(upto,players, toggle):
     points1=0
     points2=0
@@ -171,13 +165,6 @@ def game(upto,players, toggle):
             winner=play2(toggle)
         elif players==0:
             winner=play0(toggle)
-        #secret mode, just for fun
-        elif players==589:
-            winner=play589()
-        if winner=='player_1':
-            points1+=1
-        if winner=='player_2':
-            points2+=1
     if points2==upto:
         print "player 1 has ", points1, "points"
         print "player 2 has ", points2, "points"
@@ -199,7 +186,7 @@ def init():
     except ValueError:
         print "input a number please"
         init()
-    if players>2 or players <0 and players !=589: # secret mode, just for fun
+    if players>2 or players <0:
         print "Sorry, we only support two players"
         init()
     upto=raw_input("What do you want to play up to?\n")
