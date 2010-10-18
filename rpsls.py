@@ -165,6 +165,10 @@ def game(upto,players, toggle):
             winner=play2(toggle)
         elif players==0:
             winner=play0(toggle)
+        if winner=='player_1':
+            points1+=1
+        if winner=='player_2':
+            points2+=1
     if points2==upto:
         print "player 1 has ", points1, "points"
         print "player 2 has ", points2, "points"
