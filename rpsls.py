@@ -199,7 +199,7 @@ def init():
     except ValueError:
         print "input a number please"
         init()
-    if players>2 and players !=589: # secret mode, just for fun
+    if players>2 or players <0 and players !=589: # secret mode, just for fun
         print "Sorry, we only support two players"
         init()
     upto=raw_input("What do you want to play up to?\n")
@@ -208,7 +208,7 @@ def init():
     except ValueError:
         print "input a number please"
         init()
-    if upto==0:
+    if upto<=0:
         print "you can't play up to zero, stupid"
         init()
     #secret toggle for turning on cheat mode.
