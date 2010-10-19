@@ -118,13 +118,13 @@ def compare(move, move2, p, toggle):
     elif move=="spock":
         winner=spock(move2, toggle)
         return winner
-    else:
-        if p==1:
-            print "Your move was not legal. Please input rock paper scissors lizard or spock"
-            play1(toggle)
-        elif p==2:
-            print "Someone's move was not legal, start over. maybe a typo?"
-            play2(toggle)
+    #else:
+    #    if p==1:
+    #        print "Your move was not legal. Please input rock paper scissors lizard or spock"
+    #        play1(toggle)
+    #    elif p==2:
+    #        print "Someone's move was not legal, start over. maybe a typo?"
+    #        play2(toggle)
 def play0(toggle):
     #play no players
     move=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
@@ -138,6 +138,9 @@ def play1(toggle):
     #input for player two randomly from a list of options.
     move=raw_input("Player 1:Rock Paper Scissors Lizard Spock?\n")
     move=move.lower()
+    if move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
+        print 'wrong input'
+        play1(toggle)
     move2=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
     print 'player 2 threw', move2
     winner=compare(move,move2,1, toggle)
@@ -146,9 +149,15 @@ def play2(toggle):
     #play two players. get inputs for both players one and two, then compare 'em.
     move=raw_input("Player 1:Rock Paper Scissors Lizard Spock? ")
     move=move.lower()
+    if move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
+        print 'wrong input'
+        play1(toggle)
     clear_screen()
     move2=raw_input("Player 2: Rock Paper Scissors Lizard Spock? ")
     move2=move2.lower()
+    if move2!='spock' and move2 != 'lizard' and move2 !='paper' and move2 !='scissors' and move2 !='rock':
+        print 'wrong input'
+        play1(toggle)
     print "player 1 threw ",move
     print "player 2 threw ",move2
     winner=compare(move,move2,2, toggle)
