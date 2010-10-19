@@ -151,13 +151,13 @@ def play2(toggle):
     move=move.lower()
     if move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
         print 'wrong input'
-        play1(toggle)
+        play2(toggle)
     clear_screen()
     move2=raw_input("Player 2: Rock Paper Scissors Lizard Spock? ")
     move2=move2.lower()
     if move2!='spock' and move2 != 'lizard' and move2 !='paper' and move2 !='scissors' and move2 !='rock':
         print 'wrong input'
-        play1(toggle)
+        play2(toggle)
     print "player 1 threw ",move
     print "player 2 threw ",move2
     winner=compare(move,move2,2, toggle)
