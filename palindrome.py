@@ -27,7 +27,7 @@ def clean_word(word, function):
                 replacement_word+=l
     #get rid of uppercase
     for l in replacement_word:
-        if ord(l)>64 and ord(l)<91:
+        if ord(l) in range(65,91):
             replacement_word1+=chr(ord(l)+32)
         else:
             replacement_word1+=l
@@ -44,7 +44,7 @@ def word_level_palindromes(phrase):
             length_of_word+=1
             ctr-=1
         #add the word to the new phrase. ctr is iterating backwards, so ctr will be the start point
-        #of the word, and it will be length_of_word letters long
+        #of the word, and word will be length_of_word letters long
         new_phrase+=phrase[ctr:ctr+length_of_word]
         #go backwards until you get to a letter again.
         while ctr-1>=0 and not phrase[ctr-1] in ltrs:
@@ -56,6 +56,7 @@ def easy_word_level_palindromes(phrase):
    list_of_words=phrase.split()
    i=0
    for word in list_of_words:
+       #clean the words
        list_of_words[i]=clean_word(word, word_level_palindromes)
        i+=1
    #the extended slice operator goes [start:stop:step] the step is backwards.
