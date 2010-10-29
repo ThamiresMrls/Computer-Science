@@ -1,37 +1,31 @@
 import math
 
-def initial_velocity(height, distance):
-    return distance/(math.sqrt(height/4.9))
+#distance=float(raw_input("initial distance to get initial velocity\n"))
 
-def time_to_peak(init_v, theta):
-    return (init_v*math.sin(theta))/9.8
+#height=float(raw_input("initial height to get initial velocity\n"))
 
-def max_height(theta, init_v, time_to_p,height):
-    return init_v*math.sin(theta)*time_to_p-4.9*time_to_p**2+height
+height2=float(raw_input("height at launch point (in meters)"))
+#initial_velocity = distance/(math.sqrt(height/4.9))
 
-def total_time(time_to_p, max_h):
-    return time_to_p+math.sqrt(max_h/4.9)
+initial_velocity=400
 
-def total_x(init_v, total_t, theta):
-    return init_v*math.cos(theta)*total_t
-
-distance=float(raw_input("initial distance to get initial velocity\n"))
-height=float(raw_input("initial height to get initial velocity\n"))
-init_v=initial_velocity(height, distance)
-print "initial velocity is ", init_v
 theta=float(raw_input("What angle?\n"))
+
 theta=math.radians(theta)
+
 print theta
-time_to_p=time_to_peak(init_v, theta)
-print time_to_p, "time to p"
 
-max_h=max_height(theta, init_v, time_to_p, height)
-print max_h, "max h"
+time_to_peak = (initial_velocity*math.sin(theta))/9.8
 
-total_t=total_time(time_to_p, max_h)
-print total_t, "total t"
+print time_to_peak, "time to p"
 
-total_distance=total_x(init_v, total_t, theta)
-print total_distance, "total d"
+max_height = initial_velocity*math.sin(theta)*time_to_peak-4.9*time_to_peak**2+height2
 
-print "the total distance is ", total_distance, "meters"
+print max_height, "max_height"
+
+total_time = time_to_peak+math.sqrt(max_height/4.9)
+print total_time, "total_time"
+
+total_x = initial_velocity*math.cos(theta)*total_time
+
+print total_x,"meters", "total distance"
