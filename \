@@ -1,0 +1,14 @@
+    while True:
+        players=raw_input("How many players?(0, 1, or 2)\n")
+        if players in ('0','1','2'):
+            players=int(players)
+            break
+        else: print 'not allowed.'
+    while True:
+        upto=False
+        try:
+            upto=input("What do you want to play up to?\n")
+        except:
+            print "input a number please"
+        if upto >0:
+            break

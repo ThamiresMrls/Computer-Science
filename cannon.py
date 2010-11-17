@@ -22,7 +22,7 @@ import math
 height2=float(raw_input("height at launch point (in meters)"))
 #initial_velocity = distance/(math.sqrt(height/4.9))
 
-initial_velocity=400
+initial_velocity=2.95
 
 theta=float(raw_input("What angle?\n"))
 

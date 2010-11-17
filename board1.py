@@ -52,13 +52,6 @@ def tietest():
     else:
         return False
 
-#needs to be written. Just add it to the test 
-#function when it has been.
-#def tietest():
-#    for i in range(6):
-#        for e in range(7):
-            #check if everything is filled here.
-
 
 #groups all the tests into one.
 def test(p):
@@ -87,27 +80,9 @@ def print_board():
         print board[i]
 
 
-def drop(col):
-    if col=='a':
-        return 0,'a'
-    elif col=='b':
-        return 1,'b'
-    elif col=='c':
-        return 2,'c'
-    elif col=='d':
-        return 3,'d'
-    elif col=='e':
-        return 4,'e'
-    elif col=='f':
-        return 5,'f'
-    elif col=='g':
-        return 6,'g'
-    else:
-        print "That's not a column"
-        turn(p)
 
 
-def change_board(y,n,p):
+def drop(y,n,p):
     if board[5][y]==n:
         board[5][y]=p
     elif board[4][y]==n:

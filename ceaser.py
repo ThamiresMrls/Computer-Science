@@ -1,7 +1,10 @@
 ###THIS IS DANIEL'S CODE AND IT WORKS YEAAAAAAAAAAAH
 ###DANIEL DYSSEGAARD KALLICK THAT IS.
-from letter_probabilities import letter_prob
-
+try:
+    from letter_probabilities import letter_prob
+except ImportError:
+    print "You need letter_probabilities.py in the same directory"
+    print "Ain't nothing gonna work without letter_probabilities.py"
 def decipher(ciphertext, n):
     """
     Takes in a ciphertext and a number, 'n'. Every letter is then
@@ -113,4 +116,6 @@ match_distribution = best_match(phrase)
 #is stored. This can then be used to decipher the text.
 shift=match_distribution[26]
 decryption=decipher(phrase, shift)
+print "The shift was", shift
+print "The decrypted text is"
 print decryption

@@ -1,8 +1,7 @@
 #this is rock paper scissors lizard spock.
 import random
 def clear_screen():
-    for i in range(50):
-        print '\n'
+    print '\n'*100
 def cheatmode(toggle):
     #cheat mode!
     # get a random number between 0 and a hundred, 
@@ -118,13 +117,6 @@ def compare(move, move2, p, toggle):
     elif move=="spock":
         winner=spock(move2, toggle)
         return winner
-    #else:
-    #    if p==1:
-    #        print "Your move was not legal. Please input rock paper scissors lizard or spock"
-    #        play1(toggle)
-    #    elif p==2:
-    #        print "Someone's move was not legal, start over. maybe a typo?"
-    #        play2(toggle)
 def play0(toggle):
     #play no players
     move=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
@@ -136,28 +128,25 @@ def play0(toggle):
 def play1(toggle):
     #play one player. get an input for player 1, then choose the
     #input for player two randomly from a list of options.
-    move=raw_input("Player 1:Rock Paper Scissors Lizard Spock?\n")
-    move=move.lower()
-    if move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
-        print 'wrong input, you broke everything'
-        init()#I know this is bad. I think it works.
+    move=''
+    while move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
+        move=raw_input("Player 1:Rock Paper Scissors Lizard Spock?\n")
+        move=move.lower()
     move2=random.choice(["rock", "paper", "scissors", "lizard", "spock"])
     print 'player 2 threw', move2
     winner=compare(move,move2,1, toggle)
     return winner
 def play2(toggle):
     #play two players. get inputs for both players one and two, then compare 'em.
-    move=raw_input("Player 1:Rock Paper Scissors Lizard Spock? ")
-    move=move.lower()
-    if move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
-        print 'wrong input, you broke everything'
-        init() #I know this is bad, but I'm pretty sure it works
+    move=''
+    while move!='spock' and move != 'lizard' and move !='paper' and move !='scissors' and move !='rock':
+        move=raw_input("Player 1:Rock Paper Scissors Lizard Spock? ")
+        move=move.lower()
     clear_screen()
-    move2=raw_input("Player 2: Rock Paper Scissors Lizard Spock? ")
-    move2=move2.lower()
-    if move2!='spock' and move2 != 'lizard' and move2 !='paper' and move2 !='scissors' and move2 !='rock':
-        print 'wrong input, you broke everything'
-        init()# again, this is bad because I'm calling the first function but yeah.
+    move2=''
+    while move2!='spock' and move2 != 'lizard' and move2 !='paper' and move2 !='scissors' and move2 !='rock':
+        move2=raw_input("Player 2: Rock Paper Scissors Lizard Spock? ")
+        move2=move2.lower()
     print "player 1 threw ",move
     print "player 2 threw ",move2
     winner=compare(move,move2,2, toggle)
@@ -189,37 +178,34 @@ def game(upto,players, toggle):
         print "Player 1 is the winner!"
 	return
 def init():
-    players=raw_input("How many players?(0, 1, or 2)\n")
-    try:
-        players=int(players)
-    except ValueError:
-        print "input a number please"
-        init()
-    if players>2 or players <0:
-        print "Sorry, we only support two players"
-        init()
-    upto=raw_input("What do you want to play up to?\n")
-    try:
-        upto=int(upto)
-    except ValueError:
-        print "input a number please"
-        init()
-    if upto<=0:
-        print "you can't play up to zero, stupid"
-        init()
+    while True:
+        players=raw_input("How many players?(0, 1, or 2)\n")
+        if players in ('0','1','2'):
+            players=int(players)
+            break
+        else: print 'not allowed.'
+    while True:
+        upto=False
+        try:
+            upto=input("What do you want to play up to?\n")
+        except:
+            print "input a number please"
+        if upto >0:
+            break
     #secret toggle for turning on cheat mode.
     toggle=raw_input("Is spock really cool (y/n)?\n")
     if toggle=='y' or toggle=='Y':
         toggle='on'
     else:
-        toggle=='off'
+        toggle='off'
     game(upto,players, toggle)
     again=raw_input("Would you care to play again? (y/n)\n")
-    if again=='n' or again=='N':
-        return 'no'
-    else:
+    if again=='y' or again=='Y':
         return 'yes'
+    else:
+        return 'no'
 #Much better solution here.
 again='yes'
 while again !='no':
+    again='no'
     again=init()
