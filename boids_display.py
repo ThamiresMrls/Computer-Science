@@ -16,7 +16,7 @@ import math,pygame
 # width and the height of the display window. It then creates a pygame
 # window, displays the boids and calls the update function in every
 # frame.
-def run_display(boids, update_function, WIDTH, HEIGHT):
+def run_display(boids, update_function, WIDTH, HEIGHT,sm,cm,ao,sl):
     pygame.init()
     width = WIDTH
     height = HEIGHT
@@ -35,13 +35,13 @@ def run_display(boids, update_function, WIDTH, HEIGHT):
                 keepGoing = False
 
         # update boids
-        update_function(boids, dt)
+        update_function(boids, dt,sm,cm,ao,sl)
 
         # draw everything
         screen.fill((25,25,112))
 
         for b in boids:
-            pygame.draw.circle(screen,b[4],(int(round(b[0])),int(round(b[1]))),10)
+            pygame.draw.circle(screen,b[4],(int(round(b[0])),int(round(b[1]))),b[5])
             point_x = b[0] + float(b[2]) / math.sqrt(b[2]**2 + b[3]**2) * 20
             point_y = b[1] + float(b[3]) / math.sqrt(b[2]**2 + b[3]**2) * 20
             pygame.draw.line(screen,b[4],(int(b[0]),int(b[1])),(point_x, point_y), 3)

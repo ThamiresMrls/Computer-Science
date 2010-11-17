@@ -25,7 +25,6 @@
 ##
 
 import math,pygame
-
 def run_display(grid, cell_size, on_click, p):
     """
     This function takes a grid (represented as a list of lists) where
