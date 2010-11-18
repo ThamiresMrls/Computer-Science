@@ -12,12 +12,12 @@ from separate import separate
 
 # These are global constants. That is global variables, with a value
 # that never changes while the program runs.
-WIDTH = 1000
-HEIGHT = 1000
+WIDTH = input("width?(in pixels please)\n")
+HEIGHT = input("height?(in pixels please)\n")
 SEPARATION_MULTIPLIER=input("Separation multiplier(1 for normal, int please\n")
 COHESION_MULTIPLIER=input("Cohesion multiplier (1 for normal, int please\n")
 align_on=raw_input("align? y/n\n")
-speed_limit=input("speed limit? please give in pixels/second, for normal do 500\n")
+sl=input("speed limit? please give in pixels/second, for normal do 500\n")
 
 def run_swarm(n):
 
@@ -37,7 +37,7 @@ def run_swarm(n):
     # the name of a function which describes how each boids position
     # and speed should be updated as time passes, and the width and
     # the height of the display window.
-    run_display(boids, update_boids, WIDTH, HEIGHT,SEPARATION_MULTIPLIER,COHESION_MULTIPLIER,align_on,speed_limit)
+    run_display(boids, update_boids, WIDTH, HEIGHT,SEPARATION_MULTIPLIER,COHESION_MULTIPLIER,align_on,sl)
 
 
 # This function takes two parameters: a list of boids and a time in
@@ -48,7 +48,7 @@ def run_swarm(n):
 # that has passed since the last update.
 # The function update_boids gets called every few milliseconds by
 # run_display.
-def update_boids(boids, time,SEPARATION_MULTIPLIER,COHESION_MULTIPLIER,align_on,speed_limit):
+def update_boids(boids, time,SEPARATION_MULTIPLIER,COHESION_MULTIPLIER,align_on,sl):
 
     for index in range(len(boids)):
         b = boids[index]
@@ -61,8 +61,8 @@ def update_boids(boids, time,SEPARATION_MULTIPLIER,COHESION_MULTIPLIER,align_on,
             b[3] += align(index, boids)[1]
         b[4] = separate(index,boids,random_color,b[4])[2]
         # Limit velocity to 500 pixels per second horizontally and vertically
-        b[2] = speed_limit(b[2], speed_limit)
-        b[3] = speed_limit(b[3], speed_limit)
+        b[2] = speed_limit(b[2], sl)
+        b[3] = speed_limit(b[3], sl)
 
         # Update the boid's position based on its velocity and the
         # time that has passed since the last update.
@@ -89,10 +89,10 @@ def random_color():
     return color
 
 def speed_limit(vel, limit):
-    if vel > 500:
-        return 500
-    elif vel < -500:
-        return -500
+    if vel > limit:
+        return limit
+    elif vel < -limit:
+        return -limit
     else:
         return vel
 

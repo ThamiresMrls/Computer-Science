@@ -6,7 +6,7 @@
 # version: 1/31/2010
 #
 # A simple pygame display for a list of boids.
-#
+#Modified by Daniel Dyssegaard Kallick
 ###
 import math,pygame
 

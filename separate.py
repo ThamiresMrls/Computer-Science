@@ -1,4 +1,5 @@
 import math,random
+#modified by Daniel Dyssegaard Kallick
 
 def separate(index, boids, random_color, current_color):
     """This function take two parameters, the first an integer and the second a list of boids. 
