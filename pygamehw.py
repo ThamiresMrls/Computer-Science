@@ -15,10 +15,16 @@ sprite2 = pygame.image.load('sprite2.jpg').convert()
 import random
 gravity = 1
 
-def clear_screen():
+def clear_screen(hp1,hp2,gravity):
     screen.fill((240,200,200))
     screen.blit(sprite, (0,520))
     screen.blit(sprite2, (920,520))
+    display_hp1 = my_font.render("Player1 HP: " + str(hp1), True, (0,0,0))
+    display_hp2 = my_font.render("Player2 HP: " + str(hp2), True, (0,0,0))
+    display_gravity = my_font.render("Graviy: " + str(gravity), True, (0,0,0))
+    screen.blit(display_hp1, (0,50))
+    screen.blit(display_hp2, (880,50))
+    screen.blit(display_gravity, (450,50))
 def fire_gun(x,y,xvel,yvel,time_passed_seconds,player):
     hit=False
     distance_moved_x = (time_passed_seconds * xvel)
@@ -45,17 +51,27 @@ def make_vector(mag,angle):
     xvel=mag*math.cos(math.radians(angle))
     return (xvel,yvel)
 
+hp1=1
+hp2=100
 player=1
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             exit()
-    clear_screen()
+
+    gravity = random.choice([random.uniform(0.2,1),random.uniform(1,5)])
+
+    clear_screen(hp1,hp2,gravity)
     pygame.display.update()
     magnitude=input("cannon power?\n")
     angle=input("cannon angle?\n")
+    if player==2:
+        angle = 180-angle
+
+
     vector=make_vector(magnitude,angle)
     xvel,yvel=vector
+
     if player==1:
         y=519
         x=0
@@ -76,13 +92,17 @@ while True:
         pos=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)
         pygame.draw.circle(screen,color,(pos[0],pos[1]),10)
         pygame.display.update()
-        clear_screen()
+        clear_screen(hp1,hp2,gravity)
         inair=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)[2]
         hit=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)[3]
         if hit==True:
             inair=False
     if player==1:
         player=2
-    else:
+        if hit==True:
+            hp2 -=1
+    elif player==2:
         player=1
+        if hit==True:
+            hp1 -=1
     pygame.display.update()
