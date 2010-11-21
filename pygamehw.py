@@ -17,8 +17,8 @@ pygame.init()
 my_font = pygame.font.Font("linux-libertine.ttf", 16)
 screen = pygame.display.set_mode((1000,600), 0 ,32)
 pygame.display.set_caption("Hello, World!")
-sprite = pygame.image.load(sprite_image_filename).convert_alpha()
-sprite2 = pygame.image.load('sprite2.jpg').convert()
+tank1 = pygame.image.load(sprite_image_filename).convert_alpha()
+tank2 = pygame.image.load('sprite2.jpg').convert()
 import random
 
 def clear_screen(hp1,hp2,gravity):
@@ -28,8 +28,8 @@ def clear_screen(hp1,hp2,gravity):
     if hp2==0:
         winner='1'
     screen.fill((240,200,200))
-    screen.blit(sprite, (0,520))
-    screen.blit(sprite2, (920,520))
+    screen.blit(tank1, (0,520))
+    screen.blit(tank2, (920,520))
     display_hp1 = my_font.render("Player1 HP: " + str(hp1), True, (0,0,0))
     display_hp2 = my_font.render("Player2 HP: " + str(hp2), True, (0,0,0))
     display_gravity = my_font.render("Gravity: " + str(round(gravity,3)), True, (0,0,0))
@@ -65,21 +65,25 @@ def make_vector(mag,angle):
     xvel=mag*math.cos(math.radians(angle))
     return (xvel,yvel)
 
-hp1=1
-hp2=1
+hp1=10
+hp2=10
 player=1
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             exit()
 
-    gravity = random.choice([random.uniform(0.2,1),random.uniform(1,5)])
+    #gravity = random.choice([random.uniform(0.2,1),random.uniform(1,5)])
+    gravity=1
 
     clear_screen(hp1,hp2,gravity)
     pygame.display.update()
     if hp1>0 and hp2>0:
         magnitude=input("cannon power?\n")
         angle=input("cannon angle?\n")
+        if angle<15:
+            print "Man, stop cheating"
+            continue
     if player==2:
         angle = 180-angle
 
@@ -116,8 +120,18 @@ while True:
         player=2
         if hit==True and hp1>0 and hp2>0:
             hp2 -=1
+            for n in range(17):
+                screen.blit(pygame.image.load("Explode"+str(n+1)+".png").convert_alpha(), (920,520))
+                pygame.display.update()
+                pygame.time.wait(50)
+                clear_screen(hp1,hp2,gravity)
     elif player==2:
         player=1
         if hit==True and hp1>0 and hp2>0:
             hp1 -=1
+            for n in range(17):
+                screen.blit(pygame.image.load("Explode"+str(n+1)+".png").convert_alpha(), (0,520))
+                pygame.display.update()
+                pygame.time.wait(50)
+                clear_screen(hp1,hp2,gravity)
     pygame.display.update()
