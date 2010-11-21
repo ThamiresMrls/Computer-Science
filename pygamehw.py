@@ -1,3 +1,9 @@
+'''
+File: pygamehw.py
+Author: Daniel Dyssegaard Kallick
+Description:tanks, or something like that
+'''
+
 background_image_filename = 'bg.jpg'
 sprite_image_filename = 'mouse.png'
 import pygame
