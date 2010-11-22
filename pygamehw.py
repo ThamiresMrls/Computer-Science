@@ -42,7 +42,7 @@ def clear_screen(hp1,hp2,gravity):
     screen.blit(display_hp2, (880,25))
     screen.blit(display_gravity, (450,25))
     #make a blockage
-    pygame.draw.rect(screen,(0,0,0),Rect(450,400,200,200))
+    pygame.draw.rect(screen,(0,0,0),Rect(400,400,200,200))
     #if there's a winner...
     if winner!=None:
         #...show the winner
@@ -72,7 +72,7 @@ def fire_gun(x,y,xvel,yvel,time_passed_seconds,player):
     if player==2:
         if x>0 and x<80 and y>520 and y<600:
             hit=True
-    if x>450 and y>400 and x<650:
+    if x>400 and y>400 and x<600:
         obstacle=True
         inair=False
     return (int(x),int(y),inair,hit,obstacle)
@@ -150,7 +150,7 @@ while keepgoing==True:
 
     if player==1:
         y=519
-        x=0
+        x=80
         color=(255,0,0)
     else:
         y=519
@@ -170,12 +170,12 @@ while keepgoing==True:
         pygame.display.update()
         clear_screen(hp1,hp2,gravity)
         inair=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)[2]
+        if inair==False:
+            explode(pos[0],pos[1])
         hit=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)[3]
         obstacle=fire_gun(x,y,xvel,yvel,time_passed_seconds,player)[4]
         if hit==True:
             inair=False
-    if obstacle==True:
-        explode(pos[0],pos[1])
     if player==1:
         player=2
         if hit==True and hp1>0 and hp2>0:
