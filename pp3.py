@@ -11,10 +11,11 @@
 from gol_display import run_game
 
 
-ROWS = 50
-COLS = 50
+ROWS = 40
+COLS = 60
 DEAD = 0
 ALIFE = 1
+generation=0
 
 def create_grid(rows, cols):
     """
@@ -33,7 +34,7 @@ def play_gol():
 
     grid = create_grid(ROWS, COLS)
 
-    cell_size = 20
+    cell_size = 10
     run_game(grid, cell_size, on_click, next_gen)
 
 
@@ -64,6 +65,7 @@ def next_gen(grid):
     """
     You need to complete this function.
     """
+    global generation
     new_grid = create_grid(ROWS, COLS)
     for r in range(ROWS):
         for c in range(COLS):
@@ -79,5 +81,7 @@ def next_gen(grid):
                     new_grid[r][c]=1
                 else:
                     new_grid[r][c]=grid[r][c]
+    print "generation", generation
+    generation+=1
     return new_grid
 play_gol()
