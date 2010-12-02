@@ -19,9 +19,11 @@ for n in range(26):
         #write the word
         fout.write(wordlist[i])
         #if we are not at the end of the file
-        if i<length-1:
+        try:
             #go to the next word
             i+=1
+        except:
+            pass
         #if we are at the end of the file
         else:
             #stop
