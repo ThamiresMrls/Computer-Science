@@ -13,15 +13,13 @@ fin.close()
 i=0
 length=len(wordlist)
 for n in range(26):
+    currentletter=chr(n+97)
     fout=open(chr(n+97)+'.txt','w')
     #while the first letter of the word we are writing is correct
     try:
-        while wordlist[i][0]==chr(n+97):
-            #write the word
+        while wordlist[i][0]==currentletter:
             fout.write(wordlist[i])
-            #go to the next word
             i+=1
-    #except when we're at the end of the file
     except:
         pass
     fout.close()
