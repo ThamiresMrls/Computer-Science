@@ -9,18 +9,19 @@ fin=open('words.txt','r')
 #make a list of words from words.txt by reading line by line
 wordlist=fin.readlines()
 fin.close()
-
-i=0
-length=len(wordlist)
-for n in range(26):
-    currentletter=chr(n+97)
-    fout=open(chr(n+97)+'.txt','w')
-    #while the first letter of the word we are writing is correct
-    try:
-        while wordlist[i][0]==currentletter:
-            fout.write(wordlist[i])
-            i+=1
-    except:
-        pass
-    fout.close()
+def Function(wordlist):
+    i=0
+    length=len(wordlist)
+    for n in 'abcdefghijklmnopqrstuvwxyz':
+        fout=open(n+'.txt','w')
+        write=fout.write
+        #while the first letter of the word we are writing is correct
+        try:
+            while wordlist[i][0]==n:
+                write(wordlist[i])
+                i+=1
+        except:
+            pass
+        fout.close()
+Function(wordlist)
 print time.time()-t1
